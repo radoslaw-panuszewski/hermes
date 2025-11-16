@@ -1,4 +1,7 @@
-val chronicleMapJvmArgs: List<*> by rootProject.extra
+plugins {
+    id("conventions.java")
+    id("conventions.buildscript-helpers")
+}
 
 val agent: Configuration by configurations.creating {
     isCanBeResolved = true
@@ -59,21 +62,19 @@ fun registerIntegrationTestTask(name: String, common: SourceSet) {
     tasks.register<Test>(name) {
         testLogging.showStandardStreams = true
 
-        val args = mutableListOf<String>()
-        if (project.hasProperty("tests.timeout.multiplier")) {
-            args += "-Dtests.timeout.multiplier=${project.property("tests.timeout.multiplier")}"
+        jvmArgs = buildList {
+            if (project.hasProperty("tests.timeout.multiplier")) {
+                add("-Dtests.timeout.multiplier=${project.property("tests.timeout.multiplier")}")
+            }
+
+            if (project.hasProperty("confluentImagesTag")) {
+                add("-DconfluentImagesTag=${project.property("confluentImagesTag")}")
+            }
+
+            add("-javaagent:${agent.singleFile}")
+            addAll(chronicleJvmArgs)
         }
 
-        if (project.hasProperty("confluentImagesTag")) {
-            args += "-DconfluentImagesTag=${project.property("confluentImagesTag")}"
-        }
-
-        args += "-javaagent:${agent.singleFile}"
-
-        @Suppress("UNCHECKED_CAST")
-        args += chronicleMapJvmArgs as List<String>
-
-        jvmArgs = args
         minHeapSize = "2000m"
         maxHeapSize = "3500m"
 

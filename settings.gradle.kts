@@ -18,10 +18,6 @@ dependencyResolutionManagement {
     }
 }
 
-plugins {
-    id("com.autonomousapps.build-health") version "3.0.2"
-}
-
 rootProject.name = "hermes"
 
 include(
@@ -40,5 +36,7 @@ include(
     "hermes-mock",
     "integration-tests"
 )
+
+includeBuild("build-logic")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

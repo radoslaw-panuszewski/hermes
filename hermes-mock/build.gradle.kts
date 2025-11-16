@@ -1,7 +1,8 @@
 plugins {
     groovy
-    java
     `java-library`
+    id("conventions.java")
+    id("conventions.publication")
 }
 
 dependencies {

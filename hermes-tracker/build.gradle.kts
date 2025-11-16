@@ -1,3 +1,7 @@
+plugins {
+    id("conventions.java")
+}
+
 val testArtifacts: Configuration by configurations.creating
 
 dependencies {

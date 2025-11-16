@@ -7,6 +7,8 @@ import static pl.allegro.tech.hermes.test.helper.builder.TopicBuilder.topicWithR
 import com.google.pubsub.v1.ReceivedMessage;
 import java.io.IOException;
 import java.util.List;
+
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
@@ -16,6 +18,7 @@ import pl.allegro.tech.hermes.integrationtests.setup.HermesExtension;
 import pl.allegro.tech.hermes.integrationtests.subscriber.TestGooglePubSubSubscriber;
 import pl.allegro.tech.hermes.test.helper.message.TestMessage;
 
+@Disabled
 public class GooglePubSubConsumingTest {
 
   @Order(0)

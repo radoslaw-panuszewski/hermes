@@ -1,6 +1,7 @@
 plugins {
     application
     `java-library`
+    id("conventions.java")
 }
 
 application {

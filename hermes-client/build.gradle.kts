@@ -1,5 +1,7 @@
 plugins {
     `java-library`
+    id("conventions.java")
+    id("conventions.publication")
 }
 
 java {

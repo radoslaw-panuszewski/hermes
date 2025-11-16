@@ -3,7 +3,9 @@ import com.github.gradle.node.yarn.task.YarnTask
 plugins {
     `java-library`
     application
+    groovy
     alias(libs.plugins.node.gradle)
+    id("conventions.java")
 }
 
 application {
@@ -74,10 +76,8 @@ val buildHermesConsole by tasks.registering(YarnTask::class) {
         "slowIntegrationTest",
         "check"
     )
-
-    onlyIf {
-        tasksThatDontRequireConsole.intersect(gradle.startParameter.taskNames.toSet()).isEmpty()
-    }
+    val shouldExecute = tasksThatDontRequireConsole.intersect(gradle.startParameter.taskNames.toSet()).isEmpty()
+    onlyIf { shouldExecute }
 
     args = listOf("build-only")
 }
@@ -89,29 +89,21 @@ tasks.named("yarn") {
 val attachHermesConsole by tasks.registering(Copy::class) {
     dependsOn(buildHermesConsole)
     from("../hermes-console/dist")
-    val staticDirectory = "${sourceSets.main.get().output.resourcesDir!!.path}/static"
-    // remove previous static dir if exists and start with clear setup
-    doFirst {
-        delete(staticDirectory)
-    }
-    into(staticDirectory)
+    into(layout.buildDirectory.dir("resources/main/static"))
 }
 
-val prepareIndexTemplate by tasks.registering {
-    doLast {
-        val indexPath = "${sourceSets.main.get().output.resourcesDir!!.path}/static/index.html"
-        ant.withGroovyBuilder {
-            "copy"("file" to indexPath, "tofile" to "$indexPath.ftl")
-        }
-    }
+val prepareIndexTemplate by tasks.registering(Copy::class) {
+    val resourcesDir = tasks.processResources.map { it.destinationDir }
+    from(resourcesDir.map { it.resolve("resources/main/static/index.html") })
+    into(resourcesDir.map { it.resolve("resources/main/static/index.ftl") })
 }
 
 tasks.named("compileTestGroovy") {
-    dependsOn(attachHermesConsole)
+    dependsOn(attachHermesConsole, prepareIndexTemplate)
 }
 
 tasks.named("javadoc") {
-    dependsOn(attachHermesConsole)
+    dependsOn(attachHermesConsole, prepareIndexTemplate)
 }
 
 tasks.jar {

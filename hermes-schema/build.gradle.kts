@@ -1,3 +1,7 @@
+plugins {
+    id("conventions.java")
+}
+
 dependencies {
     implementation(projects.hermesApi)
 
