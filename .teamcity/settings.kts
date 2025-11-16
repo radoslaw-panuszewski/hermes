@@ -29,41 +29,38 @@ To debug in IntelliJ Idea, open the 'Maven Projects' tool window (View
 version = "2025.07"
 
 project {
-
     buildType(Build)
 }
 
-object Build : BuildType({
-    name = "Build"
+object Build : BuildType() {
+    init {
+        name = "Build"
 
-    vcs {
-        root(DslContext.settingsRoot)
-    }
-
-    steps {
-        nodeJS {
-            id = "nodejs_runner"
-            workingDir = "hermes-console"
-            shellScript = "npm install"
-        }
-        gradle {
-            name = "Assemble"
-            id = "Assemble"
-            tasks = "assemble"
-        }
-        gradle {
-            id = "gradle_runner"
-            tasks = "check"
-        }
-    }
-
-    triggers {
         vcs {
+            root(DslContext.settingsRoot)
         }
-    }
 
-    features {
-        perfmon {
+        steps {
+            nodeJS {
+                name = "Install Node"
+                workingDir = "hermes-console"
+                shellScript = "npm install"
+            }
+
+            gradle {
+                name = "Run tests"
+                tasks = "check"
+            }
+        }
+
+        triggers {
+            vcs {
+            }
+        }
+
+        features {
+            perfmon {
+            }
         }
     }
-})
+}
