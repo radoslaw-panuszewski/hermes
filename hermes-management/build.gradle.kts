@@ -53,7 +53,7 @@ dependencies {
 
 node {
     version = "20.4.0"
-    distBaseUrl = "https://nodejs.org/dist"
+    distBaseUrl = null
     download = true
     workDir = file("${layout.buildDirectory.get()}/nodejs")
     npmWorkDir = file("${layout.buildDirectory.get()}/npm")
@@ -101,7 +101,7 @@ val prepareIndexTemplate by tasks.registering {
     doLast {
         val indexPath = "${sourceSets.main.get().output.resourcesDir!!.path}/static/index.html"
         ant.withGroovyBuilder {
-            "move"("file" to indexPath, "tofile" to "$indexPath.ftl")
+            "copy"("file" to indexPath, "tofile" to "$indexPath.ftl")
         }
     }
 }
