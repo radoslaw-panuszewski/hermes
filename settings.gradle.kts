@@ -18,10 +18,6 @@ dependencyResolutionManagement {
     }
 }
 
-plugins {
-    id("com.autonomousapps.build-health") version "3.0.2"
-}
-
 rootProject.name = "hermes"
 
 include(
