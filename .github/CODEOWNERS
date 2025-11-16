@@ -1,0 +1,16 @@
+* @jb-assignment
+hermes-api @jb-assignment/hermes-core
+hermes-benchmark @jb-assignment/hermes-benchmark
+hermes-client @jb-assignment/hermes-core
+hermes-common @jb-assignment/hermes-core
+hermes-console @jb-assignment/hermes-frontend
+hermes-consumers @jb-assignment/hermes-core
+hermes-frontend @jb-assignment/hermes-frontend
+hermes-management @jb-assignment/hermes-frontend
+hermes-metrics @jb-assignment/hermes-core
+hermes-mock @jb-assignment/hermes-testing
+hermes-schema @jb-assignment/hermes-core
+hermes-test-helper @jb-assignment/hermes-testing
+hermes-tracker @jb-assignment/hermes-core
+hermes-tracker-elasticsearch @jb-assignment/hermes-core
+integration-tests @jb-assignment/hermes-testing
