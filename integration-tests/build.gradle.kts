@@ -1,4 +1,5 @@
 plugins {
+    id("conventions.java")
     id("conventions.buildscript-helpers")
 }
 

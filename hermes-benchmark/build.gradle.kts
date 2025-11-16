@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.jmh)
+    id("conventions.java")
     id("conventions.buildscript-helpers")
 }
 
@@ -32,6 +33,6 @@ dependencies {
 }
 
 tasks.check {
-    dependsOn(jmh)
+    dependsOn(tasks.jmh)
 }
 

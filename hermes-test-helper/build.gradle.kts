@@ -1,6 +1,7 @@
 plugins {
     `java-library`
-    id("conventions.publishing")
+    id("conventions.java")
+    id("conventions.publication")
 }
 
 dependencies {

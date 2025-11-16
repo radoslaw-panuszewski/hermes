@@ -13,5 +13,6 @@ plugins {
 rootProject.name = "build-logic"
 
 include(":buildscript-helpers")
+include(":java")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
