@@ -18,32 +18,32 @@ dependencies {
     api(libs.spring.boot.starter)
     api(libs.jetty.alpn.java.client)
     api(libs.jetty.http2.client.transport)
-    implementation("org.jctools:jctools-core:4.0.3")
-    api("jakarta.jms:jakarta.jms-api:3.1.0")
-    implementation("com.github.rholder:guava-retrying:2.0.0") {
+    implementation(libs.jctools.core)
+    api(libs.jakarta.jms.api)
+    implementation(libs.guava.retrying) {
         exclude(module = "guava")
     }
-    implementation("org.agrona:agrona:1.21.1")
+    implementation(libs.agrona)
     // TODO: can we update it ? Which version of server our clients use ?
-    implementation("org.hornetq:hornetq-jms-client:2.4.1.Final") {
+    implementation(libs.hornetq.jms.client) {
         exclude(module = "hornetq-native")
     }
-    api("com.google.cloud:google-cloud-pubsub:1.128.1")
-    api("org.apache.httpcomponents.core5:httpcore5:5.2.4")
+    api(libs.google.cloud.pubsub)
+    api(libs.httpcore5)
     implementation(libs.json2avro.converter)
 
     testImplementation(project(":hermes-test-helper"))
     testImplementation(libs.curator.test)
-    testImplementation("jakarta.servlet:jakarta.servlet-api:6.0.0")
+    testImplementation(libs.jakarta.servlet.api)
 
     testImplementation(project(":hermes-common"))
 
-    testImplementation("org.awaitility:awaitility-groovy:4.2.1")
+    testImplementation(libs.awaitility.groovy)
     testImplementation(libs.spock.core)
     testImplementation(libs.spock.junit4)
     testRuntimeOnly(libs.junit.vintage.engine)
 
-    sbeClasspath("uk.co.real-logic:sbe-all:1.31.1")
+    sbeClasspath(libs.sbe.all)
 }
 
 val generatedPath = "${layout.buildDirectory.get()}/generated/java/"

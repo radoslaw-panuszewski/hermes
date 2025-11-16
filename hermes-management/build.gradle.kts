@@ -19,25 +19,25 @@ dependencies {
     api(libs.spring.boot.starter.web)
     api(libs.spring.boot.starter.actuator)
     api(libs.spring.boot.starter.jersey)
-    implementation("net.sf.jopt-simple:jopt-simple:5.0.4")
+    implementation(libs.jopt.simple)
     implementation(libs.jersey.mvc.freemarker)
 
-    implementation("io.swagger:swagger-jersey2-jaxrs:1.6.14") {
+    implementation(libs.swagger.jersey2.jaxrs) {
         exclude(group = "javax.validation", module = "validation-api")
     }
 
     implementation(libs.kafka.clients)
 
-    implementation("commons-codec:commons-codec:1.16.1")
-    implementation("com.github.java-json-tools:json-schema-validator:2.2.14")
+    implementation(libs.commons.codec)
+    implementation(libs.json.schema.validator)
 
-    implementation("commons-jxpath:commons-jxpath:1.3")
-    implementation("org.apache.httpcomponents.client5:httpclient5:5.3.1")
+    implementation(libs.commons.jxpath)
+    implementation(libs.httpclient5)
 
-    api("org.javers:javers-core:7.4.2")
+    api(libs.javers.core)
 
     implementation(libs.jackson.datatype.jsr310)
-    implementation("commons-io:commons-io:2.16.1")
+    implementation(libs.commons.io)
 
     testImplementation(project(":hermes-test-helper"))
     testImplementation(libs.spring.boot.starter.test)

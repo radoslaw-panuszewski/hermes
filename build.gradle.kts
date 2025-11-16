@@ -163,7 +163,7 @@ subprojects {
         exclude(group = "org.slf4j", module = "slf4j-log4j12")
         exclude(group = "log4j", module = "log4j")
         resolutionStrategy {
-            force(libs.guava.get().toString())
+            force(libs.guava.core.get().toString())
             force(libs.jackson.databind.get().toString())
             force(libs.jackson.annotations.get().toString())
             force(libs.jackson.jaxrs.json.provider.get().toString())

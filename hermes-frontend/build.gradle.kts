@@ -16,18 +16,18 @@ dependencies {
     api(libs.spring.boot.starter)
     api(libs.undertow.core)
     // Did not update that as we're trying to abandon buffers
-    api("net.openhft:chronicle-map:3.25ea6") {
+    api(libs.chronicle.map) {
         exclude(group = "net.openhft", module = "chronicle-analytics")
     }
-    implementation("commons-io:commons-io:2.16.1")
+    implementation(libs.commons.io)
     implementation(libs.failsafe)
 
     testImplementation(project(":hermes-test-helper"))
 
     testImplementation(libs.spock.core)
     testImplementation(libs.groovy.json)
-    testImplementation("org.awaitility:awaitility-groovy:4.2.1")
-    testImplementation("org.awaitility:awaitility:4.2.1")
+    testImplementation(libs.awaitility.groovy)
+    testImplementation(libs.awaitility)
     testImplementation(libs.testcontainers.spock)
     testImplementation(libs.testcontainers.kafka)
     testRuntimeOnly(libs.junit.vintage.engine)

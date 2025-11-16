@@ -18,13 +18,13 @@ dependencies {
     compileOnly(libs.okhttp)
 
     implementation(libs.failsafe)
-    api("io.projectreactor:reactor-core:3.6.5")
+    api(libs.reactor.core)
 
     testImplementation(libs.spock.core)
     testImplementation(libs.spock.junit4)
     testImplementation(libs.wiremock.standalone)
-    testImplementation("jakarta.servlet:jakarta.servlet-api:6.0.0")
-    testImplementation("com.jayway.jsonpath:json-path:2.9.0")
+    testImplementation(libs.jakarta.servlet.api)
+    testImplementation(libs.jsonpath)
 
     testImplementation(libs.micrometer.core)
     testImplementation(libs.jersey.client)
@@ -33,6 +33,6 @@ dependencies {
     testImplementation(libs.spring.context)
     testImplementation(libs.spring.webflux)
     testImplementation(libs.okhttp)
-    testImplementation("io.projectreactor.netty:reactor-netty:1.1.18")
-    testImplementation("io.projectreactor:reactor-test:3.6.5")
+    testImplementation(libs.reactor.netty)
+    testImplementation(libs.reactor.test)
 }

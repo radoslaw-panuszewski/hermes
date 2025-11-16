@@ -24,34 +24,34 @@ dependencies {
 
     api(libs.json2avro.converter)
 
-    api("org.apache.commons:commons-collections4:4.4")
-    implementation("commons-codec:commons-codec:1.16.1")
-    implementation(libs.guava)
+    api(libs.commons.collections4)
+    implementation(libs.commons.codec)
+    implementation(libs.guava.core)
 
     api(libs.jackson.databind)
     api(libs.avro)
-    api("com.jayway.jsonpath:json-path:2.9.0")
+    api(libs.jsonpath)
 
     implementation(libs.dropwizard.metrics.core)
 
-    implementation("com.google.code.findbugs:annotations:3.0.1")
+    implementation(libs.findbugs.annotations)
     api(libs.micrometer.core)
     api(libs.micrometer.registry.prometheus)
 
-    implementation("org.slf4j:log4j-over-slf4j:2.0.13")
-    implementation("ch.qos.logback:logback-classic:1.4.14")
+    implementation(libs.slf4j.log4j.over.slf4j)
+    implementation(libs.logback.classic)
     api(libs.kafka.clients) {
         exclude(group = "net.sf.jopt-simple")
     }
 
-    api("jakarta.inject:jakarta.inject-api:2.0.1")
+    api(libs.jakarta.inject.api)
 
     testImplementation(project(":hermes-test-helper"))
 
-    testImplementation("jakarta.servlet:jakarta.servlet-api:6.0.0")
+    testImplementation(libs.jakarta.servlet.api)
 
     testImplementation(libs.spock.core)
     testImplementation(libs.spock.junit4)
-    testImplementation("org.awaitility:awaitility-groovy:4.2.1")
+    testImplementation(libs.awaitility.groovy)
     testRuntimeOnly(libs.junit.vintage.engine)
 }

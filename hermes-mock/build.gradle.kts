@@ -5,7 +5,7 @@ plugins {
 }
 
 dependencies {
-    implementation("junit:junit:4.13.2")
+    implementation(libs.junit)
     api(libs.wiremock.standalone)
     implementation(libs.awaitility)
     api(libs.avro)

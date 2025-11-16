@@ -18,11 +18,11 @@ dependencies {
     testImplementation(libs.okhttp)
     testImplementation(libs.spring.webflux)
     testImplementation(libs.spring.test)
-    testImplementation("org.eclipse.jetty:jetty-reactive-httpclient:4.0.3")
-    testImplementation("org.awaitility:awaitility:4.2.0")
-    testImplementation("org.reactivestreams:reactive-streams:1.0.4")
+    testImplementation(libs.jetty.reactive.httpclient)
+    testImplementation(libs.awaitility.old)
+    testImplementation(libs.reactive.streams)
     // TODO: can we update it ? Which version of server our clients use ?
-    testImplementation("org.hornetq:hornetq-jms-server:2.4.1.Final") {
+    testImplementation(libs.hornetq.jms.server) {
         exclude(module = "hornetq-native")
     }
 
@@ -31,7 +31,7 @@ dependencies {
     // Add necessary Allure dependencies to dependencies section
     testImplementation(libs.allure.junit5)
 
-    agent("org.aspectj:aspectjweaver:1.9.21")
+    agent(libs.aspectjweaver)
 
     testImplementation(libs.assertj.core)
     testImplementation(libs.junit.jupiter.api)

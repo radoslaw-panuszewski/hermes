@@ -2,7 +2,7 @@ dependencies {
     implementation(project(":hermes-api"))
 
     implementation(libs.avro)
-    implementation(libs.guava)
+    implementation(libs.guava.core)
 
     testImplementation(project(":hermes-test-helper"))
 

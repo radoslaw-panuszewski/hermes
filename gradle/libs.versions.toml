@@ -19,19 +19,71 @@ spring-web = "6.1.6"
 failsafe = "3.3.2"
 junit-jupiter = "5.10.2"
 testcontainers = "1.19.8"
+testcontainers-elasticsearch = "1.20.3"
 spring = "3.2.4"
 assertj = "3.25.3"
 allure = "2.24.0"
 slf4j = "2.0.4"
+slf4j-logback = "2.0.13"
 commons-lang3 = "3.14.0"
+commons-codec = "1.16.1"
+commons-io = "2.16.1"
+commons-collections4 = "4.4"
+commons-text = "1.12.0"
+commons-jxpath = "1.3"
 axion-release = "1.21.0"
 nexus-publish = "1.0.0"
 node-gradle = "7.0.2"
 jmh = "0.7.2"
+jopt-simple = "5.0.4"
+swagger-jersey2 = "1.6.14"
+json-schema-validator = "2.2.14"
+httpclient5 = "5.3.1"
+httpcore5 = "5.2.4"
+javers = "7.4.2"
+reactor = "3.6.5"
+reactor-netty = "1.1.18"
+jakarta-servlet = "6.0.0"
+jakarta-inject = "2.0.1"
+jakarta-jms = "3.1.0"
+jakarta-ws-rs = "3.1.0"
+jakarta-xml-bind = "4.0.0"
+jakarta-annotation = "3.0.0"
+jaxb = "4.0.5"
+jsonpath = "2.9.0"
+findbugs = "3.0.1"
+logback = "1.4.14"
+awaitility = "4.2.1"
+awaitility-old = "4.2.0"
+hibernate-validator = "9.0.1.Final"
+handy-uri-templates = "2.1.8"
+chronicle-map = "3.25ea6"
+jctools = "4.0.3"
+guava-retrying = "2.0.0"
+agrona = "1.21.1"
+hornetq = "2.4.1.Final"
+google-cloud-pubsub = "1.128.1"
+sbe = "1.31.1"
+spotbugs = "4.8.4"
+json-unit = "3.2.7"
+junit-old = "4.13.2"
+junit-dataprovider = "1.10.0"
+mockito = "5.11.0"
+jetty-reactive = "4.0.3"
+reactive-streams = "1.0.4"
+elasticsearch-transport = "7.10.2"
+aspectjweaver = "1.9.21"
+node = "20.4.0"
 
 [libraries]
 slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+slf4j-log4j-over-slf4j = { module = "org.slf4j:log4j-over-slf4j", version.ref = "slf4j-logback" }
 commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "commons-lang3" }
+commons-codec = { module = "commons-codec:commons-codec", version.ref = "commons-codec" }
+commons-io = { module = "commons-io:commons-io", version.ref = "commons-io" }
+commons-collections4 = { module = "org.apache.commons:commons-collections4", version.ref = "commons-collections4" }
+commons-text = { module = "org.apache.commons:commons-text", version.ref = "commons-text" }
+commons-jxpath = { module = "commons-jxpath:commons-jxpath", version.ref = "commons-jxpath" }
 
 # Allure
 allure-bom = { module = "io.qameta.allure:allure-bom", version.ref = "allure" }
@@ -46,11 +98,13 @@ spock-junit4 = { module = "org.spockframework:spock-junit4", version.ref = "spoc
 spock-spring = { module = "org.spockframework:spock-spring", version.ref = "spock" }
 
 # Testing
-junit = { module = "junit:junit", version = "4.11" }
-junit-dataprovider = { module = "com.tngtech.java:junit-dataprovider", version = "1.10.0" }
-mockito-core = { module = "org.mockito:mockito-core", version = "5.11.0" }
+junit = { module = "junit:junit", version.ref = "junit-old" }
+junit-dataprovider = { module = "com.tngtech.java:junit-dataprovider", version.ref = "junit-dataprovider" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
 assertj-core = { module = "org.assertj:assertj-core", version.ref = "assertj" }
-awaitility = { module = "org.awaitility:awaitility", version = "4.2.1" }
+awaitility = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
+awaitility-groovy = { module = "org.awaitility:awaitility-groovy", version.ref = "awaitility" }
+awaitility-old = { module = "org.awaitility:awaitility", version.ref = "awaitility-old" }
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter" }
 junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "junit-jupiter" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter" }
@@ -72,7 +126,7 @@ spring-context = { module = "org.springframework:spring-context", version.ref = 
 kafka-clients = { module = "org.apache.kafka:kafka-clients", version.ref = "kafka" }
 
 # Guava
-guava = { module = "com.google.guava:guava", version.ref = "guava" }
+guava-core = { module = "com.google.guava:guava", version.ref = "guava" }
 
 # Jackson
 jackson-annotations = { module = "com.fasterxml.jackson.core:jackson-annotations", version.ref = "jackson" }
@@ -92,6 +146,7 @@ jersey-proxy-client = { module = "org.glassfish.jersey.ext:jersey-proxy-client",
 # Jetty
 jetty-alpn-java-client = { module = "org.eclipse.jetty:jetty-alpn-java-client", version.ref = "jetty" }
 jetty-http2-client-transport = { module = "org.eclipse.jetty.http2:jetty-http2-client-transport", version.ref = "jetty" }
+jetty-reactive-httpclient = { module = "org.eclipse.jetty:jetty-reactive-httpclient", version.ref = "jetty-reactive" }
 
 # Curator
 curator-client = { module = "org.apache.curator:curator-client", version.ref = "curator" }
@@ -122,13 +177,60 @@ undertow-core = { module = "io.undertow:undertow-core", version.ref = "undertow"
 # Failsafe
 failsafe = { module = "dev.failsafe:failsafe", version.ref = "failsafe" }
 
+# Reactor
+reactor-core = { module = "io.projectreactor:reactor-core", version.ref = "reactor" }
+reactor-netty = { module = "io.projectreactor.netty:reactor-netty", version.ref = "reactor-netty" }
+reactor-test = { module = "io.projectreactor:reactor-test", version.ref = "reactor" }
+
+# Jakarta
+jakarta-servlet-api = { module = "jakarta.servlet:jakarta.servlet-api", version.ref = "jakarta-servlet" }
+jakarta-inject-api = { module = "jakarta.inject:jakarta.inject-api", version.ref = "jakarta-inject" }
+jakarta-jms-api = { module = "jakarta.jms:jakarta.jms-api", version.ref = "jakarta-jms" }
+jakarta-ws-rs-api = { module = "jakarta.ws.rs:jakarta.ws.rs-api", version.ref = "jakarta-ws-rs" }
+jakarta-xml-bind-api = { module = "jakarta.xml.bind:jakarta.xml.bind-api", version.ref = "jakarta-xml-bind" }
+jakarta-annotation-api = { module = "jakarta.annotation:jakarta.annotation-api", version.ref = "jakarta-annotation" }
+
+# JAXB
+jaxb-core = { module = "com.sun.xml.bind:jaxb-core", version.ref = "jaxb" }
+jaxb-impl = { module = "com.sun.xml.bind:jaxb-impl", version.ref = "jaxb" }
+
+# JSON
+jsonpath = { module = "com.jayway.jsonpath:json-path", version.ref = "jsonpath" }
+json-schema-validator = { module = "com.github.java-json-tools:json-schema-validator", version.ref = "json-schema-validator" }
+json-unit-fluent = { module = "net.javacrumbs.json-unit:json-unit-fluent", version.ref = "json-unit" }
+
+# HTTP Clients
+httpclient5 = { module = "org.apache.httpcomponents.client5:httpclient5", version.ref = "httpclient5" }
+httpcore5 = { module = "org.apache.httpcomponents.core5:httpcore5", version.ref = "httpcore5" }
+
+# Other
+jopt-simple = { module = "net.sf.jopt-simple:jopt-simple", version.ref = "jopt-simple" }
+swagger-jersey2-jaxrs = { module = "io.swagger:swagger-jersey2-jaxrs", version.ref = "swagger-jersey2" }
+javers-core = { module = "org.javers:javers-core", version.ref = "javers" }
+findbugs-annotations = { module = "com.google.code.findbugs:annotations", version.ref = "findbugs" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+hibernate-validator = { module = "org.hibernate.validator:hibernate-validator", version.ref = "hibernate-validator" }
+handy-uri-templates = { module = "com.damnhandy:handy-uri-templates", version.ref = "handy-uri-templates" }
+chronicle-map = { module = "net.openhft:chronicle-map", version.ref = "chronicle-map" }
+jctools-core = { module = "org.jctools:jctools-core", version.ref = "jctools" }
+guava-retrying = { module = "com.github.rholder:guava-retrying", version.ref = "guava-retrying" }
+agrona = { module = "org.agrona:agrona", version.ref = "agrona" }
+hornetq-jms-client = { module = "org.hornetq:hornetq-jms-client", version.ref = "hornetq" }
+hornetq-jms-server = { module = "org.hornetq:hornetq-jms-server", version.ref = "hornetq" }
+google-cloud-pubsub = { module = "com.google.cloud:google-cloud-pubsub", version.ref = "google-cloud-pubsub" }
+sbe-all = { module = "uk.co.real-logic:sbe-all", version.ref = "sbe" }
+spotbugs-annotations = { module = "com.github.spotbugs:spotbugs-annotations", version.ref = "spotbugs" }
+reactive-streams = { module = "org.reactivestreams:reactive-streams", version.ref = "reactive-streams" }
+elasticsearch-transport = { module = "org.elasticsearch.client:transport", version.ref = "elasticsearch-transport" }
+aspectjweaver = { module = "org.aspectj:aspectjweaver", version.ref = "aspectjweaver" }
+
 # Testcontainers
 testcontainers = { module = "org.testcontainers:testcontainers", version.ref = "testcontainers" }
 testcontainers-spock = { module = "org.testcontainers:spock", version.ref = "testcontainers" }
 testcontainers-kafka = { module = "org.testcontainers:kafka", version.ref = "testcontainers" }
 testcontainers-gcloud = { module = "org.testcontainers:gcloud", version.ref = "testcontainers" }
 testcontainers-toxiproxy = { module = "org.testcontainers:toxiproxy", version.ref = "testcontainers" }
-testcontainers-elasticsearch = { module = "org.testcontainers:elasticsearch", version = "1.20.3" }
+testcontainers-elasticsearch = { module = "org.testcontainers:elasticsearch", version.ref = "testcontainers-elasticsearch" }
 
 [plugins]
 axion-release = { id = "pl.allegro.tech.build.axion-release", version.ref = "axion-release" }
