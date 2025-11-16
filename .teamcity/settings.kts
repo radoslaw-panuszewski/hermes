@@ -1,13 +1,19 @@
-import jetbrains.buildServer.configs.kotlin.*
-import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.BuildType
+import jetbrains.buildServer.configs.kotlin.CompoundStage
+import jetbrains.buildServer.configs.kotlin.DslContext
+import jetbrains.buildServer.configs.kotlin.Project
 import jetbrains.buildServer.configs.kotlin.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
+import jetbrains.buildServer.configs.kotlin.project
+import jetbrains.buildServer.configs.kotlin.sequential
+import jetbrains.buildServer.configs.kotlin.toId
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.version
 
 version = "2025.07"
 
 project {
-    sequential {
+    sequentialChain {
         parallel {
             buildType(Gradle("Unit tests", "check"))
             buildType(Gradle("Integration tests", "integrationTest"))
@@ -15,6 +21,11 @@ project {
             buildType(Gradle("JMH benchmark", "jmh"))
         }
     }
+}
+
+fun Project.sequentialChain(block: CompoundStage.() -> Unit) {
+    val buildTypes = sequential(block).buildTypes()
+    buildTypes.forEach(::buildType)
 }
 
 class Gradle(buildTypeName: String, tasks: String) : BuildType() {
